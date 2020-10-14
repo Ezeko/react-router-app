@@ -1,24 +1,19 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Home from './components/Home'
+import Index from './components/Index'
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <div class="progress">
-        <div class="indeterminate"></div>
-      </div>
-      <div class="preloader-wrapper big active">
-    <div class="spinner-layer spinner-blue-only">
-      <div class="circle-clipper left">
-        <div class="circle"></div>
-      </div><div class="gap-patch">
-        <div class="circle"></div>
-      </div><div class="circle-clipper right">
-        <div class="circle"></div>
-      </div>
-    </div>
-  </div>
-    </div>
+    <BrowserRouter>
+    <Switch>
+      <Route path='/home' component={Home}/>
+      <Route path='/' component={Index} />
+    </Switch>
+    
+    </BrowserRouter>
   );
 }
 
