@@ -10,7 +10,7 @@ const Index = (props) => {
     const submitHandler = (e) => {
         e.preventDefault();
         e.target.reset();
-        props.createProject({something: state.something})
+        props.createProject({title: state.something})
 
         setState({isEmpty: false, something: ''})
     }
