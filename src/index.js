@@ -5,24 +5,28 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux'
 import RootReducer from './components/store/rootReducer'
-import {createStore, applyMiddleware,} from 'redux'
+import {createStore, applyMiddleware, compose} from 'redux'
 import thunk from 'redux-thunk'
-import {createFirestoreInstance, getFirestore} from 'redux-firestore'
-import firebase from 'firebase'
+import {createFirestoreInstance, getFirestore, reduxFirestore} from 'redux-firestore'
+import firebase from 'firebase/app'
 import firebaseConfig from './config/firebaseConfig'
-import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase'
+import { ReactReduxFirebaseProvider, getFirebase} from 'react-redux-firebase'
 
 
 const store = createStore(
   RootReducer,
-  applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore }))
+  compose(
+    applyMiddleware(thunk.withExtraArgument({getFirestore, getFirebase})),
+    reduxFirestore(firebaseConfig),
+    
+  )
 );
 
 const rrfProps = {
     firebase,
     config: firebaseConfig,
     dispatch: store.dispatch,
-   createFirestoreInstance // <- needed if using firestore
+     createFirestoreInstance, // <- needed if using firestore
   }
 
 ReactDOM.render(

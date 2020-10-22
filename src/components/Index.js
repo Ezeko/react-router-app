@@ -2,10 +2,11 @@ import React, {useState} from  'react'
 import { NavLink, Prompt } from 'react-router-dom'
 import {connect} from 'react-redux'
 import { createProject } from '../components/store/actions/projectActions'
+import ProjectList from './ProjectList'
 
 const Index = (props) => {
     //console.log(props)
-    //console.log(props.project)
+    //console.log(props.data)
     const [state, setState] = useState({isEmpty: false, something: ''});
     const submitHandler = (e) => {
         e.preventDefault();
@@ -30,13 +31,15 @@ const Index = (props) => {
                     setState({isEmpty: true, something: text.target.value})
                     }/>
                 </form>
-
+                <ProjectList />
             </div>
+
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
+    //console.log(state)
     return {
         project: state.project
     }
@@ -46,4 +49,4 @@ const mapDispatchToProps = (dispatch) =>{
         createProject: (project) => dispatch(createProject(project))
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Index) 
+export default connect( mapStateToProps, mapDispatchToProps)(Index) 
