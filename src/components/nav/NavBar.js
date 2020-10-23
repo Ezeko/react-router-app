@@ -10,7 +10,7 @@ const NavBar = (props) => {
     return(
         <nav className="black dark ">
             <ul >
-                <li><NavLink className='left nav' to='/dashboard' > Go to Dashboard</NavLink></li>
+                <li><NavLink className='left nav' to='/dashboard' > {props.auth.uid ? 'Dashboard' : 'HOME' }</NavLink></li>
                 {props.auth.uid ? 
                 <SignedIn />
                 :

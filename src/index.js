@@ -10,14 +10,14 @@ import thunk from 'redux-thunk'
 import {createFirestoreInstance, getFirestore, reduxFirestore} from 'redux-firestore'
 import firebase from 'firebase/app'
 import firebaseConfig from './config/firebaseConfig'
-import { ReactReduxFirebaseProvider, getFirebase} from 'react-redux-firebase'
+import { ReactReduxFirebaseProvider, getFirebase,} from 'react-redux-firebase'
 
 
 const store = createStore(
   RootReducer,
   compose(
     applyMiddleware(thunk.withExtraArgument({getFirestore, getFirebase})),
-    reduxFirestore(firebaseConfig)
+    reduxFirestore(firebaseConfig),
 
     
   )
@@ -25,7 +25,7 @@ const store = createStore(
 
 const rrfProps = {
     firebase,
-    config: firebaseConfig,
+    config: (firebaseConfig, {attachAuthIsReady: true}),
     dispatch: store.dispatch,
      createFirestoreInstance, // <- needed if using firestore
   }
