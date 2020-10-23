@@ -8,13 +8,13 @@ import Spinner from '../../loaders/Spinner'
 
 const ProjectList = ({projects}) => {
     //console.log('projects ', projects)
+    
     return(
         <div className='section'>
             {projects !== undefined && projects.length > 0 ? projects.map((project)=>{
                 return(
-                <Link to={`/project/${project.id}`} >
-                    <div className="row hoverable" key={project.id}>
-                    {console.log(project.createdAt)}
+                <Link to={`/project/${project.id}`} key={project.id}>
+                    <div className="row hoverable" >
                     <div className="col s12">
                     <div className="card blue-grey darken-1">
                         <div className="card-content white-text">
@@ -22,12 +22,12 @@ const ProjectList = ({projects}) => {
 
                         </div>
                         <div className="card-action">
-                        <Link to='#'><h6>Author: {project.authorName}</h6></Link>
-                        <Link to='#'><h6>
+                        <h6>Author: {project.authorName}</h6>
+                        <h6>
                         posted: {
                             moment((new Date(project.createdAt.seconds * 1000))).fromNow()
                             
-                        }</h6></Link>
+                        }</h6>
                         </div>
                     </div>
                     </div>
@@ -41,8 +41,10 @@ const ProjectList = ({projects}) => {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state)
     return {
-        projects: state.firestore.ordered.projects
+        projects: state.firestore.ordered.projects,
+        auth: state.firebase.auth
     }
 }
 

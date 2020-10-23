@@ -9,7 +9,7 @@ const SignedOut = () => {
                 <NavLink to='/login' > SignIn</NavLink>
             </li>
             <li>
-                <NavLink  to='/signup' > Register </NavLink>
+                <NavLink  to='/register' > Register </NavLink>
             </li>
         </ul>
     )

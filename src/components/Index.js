@@ -37,7 +37,7 @@ const Index = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
+    //console.log(state)
     return {
         project: state.project
     }
