@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import ProjectList from './ProjectList'
+import ProjectList from './dashboard/projects/ProjectList'
 
 const Home = () => {
     return (
