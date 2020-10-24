@@ -7,7 +7,8 @@ import { signUp } from '../store/actions/authActions'
 const SignUp = (props) => {
     const [state, setState] = useState({
         email: null,
-        password: null
+        password: null,
+        authorName: null
     })
     const handleChange = (e) => {
         
@@ -30,11 +31,16 @@ const SignUp = (props) => {
 
     return (
         <div>
-        {console.log(props)
+        {//console.log(props)
+        //console.log(state)
         }
             <NavBar />
             <div className='container'>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className='container'>
+                    <div className='input-field col s6'>
+                        <label htmlFor='authorName'> Author Name</label>
+                        <input type='text' id='authorName' onChange={handleChange}  required />
+                    </div>
                     <div className='input-field col s6'>
                         <label htmlFor='email'> Email</label>
                         <input type='email' id='email' onChange={handleChange}  required />

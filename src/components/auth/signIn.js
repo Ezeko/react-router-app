@@ -27,7 +27,8 @@ const SignIn = (props) => {
     }
     return (
         <div>
-        {console.log(props)}
+        {//console.log(props)
+        }
             <NavBar />
             <div className='container'>
                 <form onSubmit={handleSubmit}>

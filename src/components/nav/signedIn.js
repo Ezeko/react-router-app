@@ -5,7 +5,8 @@ import {signOut} from '../store/actions/authActions'
 
 const SignedIn = (props) => {
     
-    console.log('props', props.auth)
+    const {initial} = props
+    //console.log('props', props.auth)
     return(
         <ul className='right'>
             <li>
@@ -16,7 +17,9 @@ const SignedIn = (props) => {
                 <NavLink  to='/' onClick={props.signOut}> Logout </NavLink>
             </li>
             <li>
-                <NavLink className='btn btn-floating' to='/dashboard' > EZ </NavLink>
+                <NavLink className='btn btn-floating' to='/dashboard' > {
+                    initial ? initial.toUpperCase() : 'NU'
+                } </NavLink>
             </li>
         </ul>
     )
