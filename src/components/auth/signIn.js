@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import NavBar from '../nav/NavBar'
-import {signIn} from '../store/actions/authActions'
+import {signIn} from '../../store/actions/authActions'
 import {connect} from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
@@ -22,9 +22,11 @@ const SignIn = (props) => {
         e.preventDefault();
         props.signIn({...state});
     }
+
     if (props.auth.uid){
         return <Redirect to='/dashboard' />
     }
+    
     return (
         <div>
         {//console.log(props)

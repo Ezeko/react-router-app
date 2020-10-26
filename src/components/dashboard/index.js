@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
 const Dashboard = ({auth}) => {
-    if (!auth.uid) {
+    if (auth.isLoaded && !auth.uid) {
         return <Redirect to='/login' />
     }
     return(

@@ -1,7 +1,7 @@
 import React, {useState} from  'react'
 import {Prompt } from 'react-router-dom'
 import {connect} from 'react-redux'
-import { createProject } from '../components/store/actions/projectActions'
+import { createProject } from '../store/actions/projectActions'
 import NavBar from './nav/NavBar'
 
 const Index = (props) => {

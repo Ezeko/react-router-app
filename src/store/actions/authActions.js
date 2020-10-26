@@ -13,7 +13,7 @@ export const signIn = (userDetails) => {
 export const signOut = () => {
     return (dispatch, getState, {getFirebase}) =>{
         const firebase = getFirebase()
-        //console.log('fire ', firebase.auth())
+        console.log('fire ', getState())
         firebase.auth().signOut()
         .then(()=> dispatch?.({type: 'SIGNOUT_SUCCESS'}))
         .catch((err) => {

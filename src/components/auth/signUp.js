@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import NavBar from '../nav/NavBar'
-import { signUp } from '../store/actions/authActions'
+import { signUp } from '../../store/actions/authActions'
 
 const SignUp = (props) => {
     const [state, setState] = useState({
@@ -22,10 +21,11 @@ const SignUp = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         props.register({...state})
+        props.history.push('/dashboard')
     }
 
     if (props.auth.uid) {
-        return <Redirect to='/dashboard' />
+        return null
     }
 
 
