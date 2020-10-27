@@ -24,7 +24,7 @@ const ProjectDetail = (props) => {
                     <Link to='#'><h6>Author: {project.authorName}</h6></Link>
                     <Link to='#'><h6>
                     posted: {
-                        moment(((project.createdAt.toDate()))).startOf('day').fromNow()
+                        moment(project.createdAt.toDate()).fromNow()
                         
                     }</h6>
                 </Link>

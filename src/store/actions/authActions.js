@@ -30,13 +30,20 @@ export const signUp = (userDetails) => {
 
         firebase.auth().createUserWithEmailAndPassword(userDetails.email, userDetails.password)
         .then((res) => {
-            console.log('userid', res.user.id)
+            //console.log('userid', res.user.id)
             return (
                 firestore.collection('users').doc(res.user.uid).set({
                     authorName: userDetails.authorName,
                     initials: userDetails.authorName[0] + userDetails.authorName[1]
                 })
             )
+        })
+        .then (() => {
+            return firestore.collection('notifications').add({
+                name: userDetails.authorName,
+                createdAt: new Date(),
+                content: 'Has joined the party'
+            })
         })
         .then(()=> dispatch?.({type: 'SIGNUP_SUCCESS'}))
         .catch((err) => {

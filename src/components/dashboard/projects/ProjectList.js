@@ -1,7 +1,4 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import { firestoreConnect } from 'react-redux-firebase'
-import { compose } from 'redux'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 import Spinner from '../../loaders/Spinner'
@@ -25,7 +22,7 @@ const ProjectList = ({projects}) => {
                         <h6>Author: {project.authorName}</h6>
                         <h6>
                         posted: {
-                            moment(((project.createdAt.toDate()))).startOf('day').fromNow()
+                            moment(((project.createdAt.toDate()))).calendar()
                             
                         }</h6>
                         </div>
@@ -40,15 +37,6 @@ const ProjectList = ({projects}) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    //console.log(state)
-    return {
-        projects: state.firestore.ordered.projects,
-        auth: state.firebase.auth
-    }
-}
 
-export default compose(
-    connect(mapStateToProps),
-    firestoreConnect([{collection: 'projects'}])
-)(ProjectList)
+
+export default ProjectList
