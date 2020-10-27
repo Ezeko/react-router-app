@@ -25,7 +25,7 @@ const ProjectList = ({projects}) => {
                         <h6>Author: {project.authorName}</h6>
                         <h6>
                         posted: {
-                            moment((new Date(project.createdAt.seconds * 1000))).fromNow()
+                            moment(((project.createdAt.toDate()))).startOf('day').fromNow()
                             
                         }</h6>
                         </div>

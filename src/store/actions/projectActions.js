@@ -3,8 +3,11 @@ export const createProject = (project) => {
 
     return (dispatch, getState, {getFirestore}) => {
         const firestore = getFirestore()
-        const user = getState().state.firebase.profile
+        const user = getState().firebase.profile
         const authorId = getState().firebase.auth.uid
+        //console.log('state ', getState().firebase.auth.uid)
+        //console.log (project)
+
         firestore.collection('projects').add({
             ...project,
             authorName: user.authorName,

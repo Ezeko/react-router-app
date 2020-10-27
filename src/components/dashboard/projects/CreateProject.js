@@ -1,28 +1,35 @@
 import React, {useState} from 'react'
 import NavBar from '../../nav/NavBar'
 import {Prompt } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { createProject } from '../../../store/actions/projectActions'
 
 
 const CreateProject = (props) => {
     const [state, setState] = useState({
         isEmpty: true
     })
+    
+    //console.log(props)
     const handleChange = (e) => {
+        //console.log(state)
         setState({
+            ...state,
             [e.target.id] : e.target.value,
             isEmpty: false
         })
     }
 
     const handleSubmit = async ( e ) =>{
-
-       await e.target.reset();
-        e.preventDefault();
-        setState({
+        await setState({
             ...state,
             isEmpty: true
         });
 
+        e.persist();
+        
+
+        props.create({title: state.title, content: state.content})
         props.history.push('/dashboard')
     }
 
@@ -49,5 +56,11 @@ const CreateProject = (props) => {
     )
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        create: (project) => dispatch(createProject(project))
+    }
+}
 
-export default CreateProject
+
+export default connect(null, mapDispatchToProps)(CreateProject)
