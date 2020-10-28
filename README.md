@@ -1,3 +1,6 @@
+Runs the app in the production mode.<br />
+Open [https://fir-redux-project-6c1e0.web.app/](https://fir-redux-project-6c1e0.web.app/) to view it live in the browser.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
